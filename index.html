@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream To Fortuner - The Legend</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #d32f2f; /* Toyota Red */
+            --dark-grey: #111;
+            --light-grey: #ccc;
+            --text-grey: #aaa;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            padding-top: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        /* ------------------------- */
+        /* Preloader               */
+        /* ------------------------- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #preloader i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            animation: spin 1.5s linear infinite;
+        }
+        
+        #preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ------------------------- */
+        /* Header / Menu           */
+        /* ------------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 0 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+
+        /* ------------------------- */
+        /* Section 1: Hero Section   */
+        /* ------------------------- */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: url('for17.jpg') no-repeat center center/cover;
+            background-attachment: fixed; 
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #fff;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .animate-on-load {
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--secondary-color);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* --------------------------------- */
+        /* Section 2: NEW Image Slider     */
+        /* --------------------------------- */
+        .slider-section {
+            padding: 4rem 0; /* Full width slider */
+            background-color: var(--dark-grey);
+            overflow: hidden;
+        }
+        
+        .slider-container {
+            max-width: 100%; /* Full width */
+            margin: 0 auto;
+            position: relative;
+            user-select: none;
+        }
+        
+        /* Add gradient overlays for style */
+        .slider-container::before,
+        .slider-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 200px;
+            z-index: 2;
+        }
+        .slider-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--dark-grey), transparent);
+        }
+        .slider-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--dark-grey), transparent);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            /* 5 original images + 5 duplicates = 10 total */
+            /* Width (350px) * 10 = 3500px */
+            width: calc(350px * 10); 
+            animation: slide 25s linear infinite;
+        }
+        
+        .slider-wrapper:hover {
+             animation-play-state: paused; /* Pause on hover */
+        }
+
+        .slide {
+            width: 350px; 
+            flex-shrink: 0;
+            padding: 0 0.75rem;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 250px; /* Fixed height for uniformity */
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .slide:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            /* Move by the width of the 5 original images */
+            100% { transform: translateX(calc(-350px * 5)); } 
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slider-wrapper {
+                width: calc(280px * 10);
+                animation: slide-mobile 25s linear infinite;
+            }
+            .slide {
+                width: 280px;
+            }
+            .slide img {
+                height: 200px;
+            }
+            @keyframes slide-mobile {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-280px * 5)); }
+            }
+            .slider-container::before,
+            .slider-container::after {
+                width: 100px; /* Smaller gradient on mobile */
+            }
+        }
+
+
+        /* ------------------------- */
+        /* Section 3: Features       */
+        /* ------------------------- */
+        .features-section {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--dark-grey);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) !important; 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            padding: 1.5rem 1.5rem 0.5rem;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .feature-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            padding: 0 1.5rem 1.5rem;
+            color: var(--light-grey);
+        }
+
+        /* ------------------------- */
+        /* Section 4: Models         */
+        /* ------------------------- */
+        .models-section {
+            padding: 4rem 2rem;
+            background-color: var(--dark-grey);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap; /* Added for mobile */
+        }
+        
+        .tab-button {
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: #222;
+            color: var(--light-grey);
+            border: 2px solid #222;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: #333;
+            color: var(--secondary-color);
+        }
+        
+        .tab-button.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .tab-content {
+            display: none; /* Hidden by default */
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tab-content.active {
+            display: grid; /* Shown by JS */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        .tab-content h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .tab-content p {
+            font-size: 1.1rem;
+            color: var(--light-grey);
+            line-height: 1.6;
+        }
+
+        /* ------------------------- */
+        /* Section 5: Reels          */
+        /* ------------------------- */
+        .reels-section {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+        }
+
+        .reels-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .reel-placeholder {
+            width: 100%;
+            max-width: 350px;
+            background: #222;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .reel-placeholder:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.2);
+        }
+
+        .instagram-media {
+            max-width: 100% !important;
+            min-width: unset !important;
+            width: 100% !important;
+            border-radius: 8px;
+        }
+
+        /* ------------------------- */
+        /* NEW: Section 6: Follow    */
+        /* ------------------------- */
+        .follow-section {
+            padding: 4rem 2rem;
+            background-color: var(--dark-grey);
+        }
+        .follow-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 4px solid var(--accent-color);
+        }
+        .follow-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        .follow-username {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .follow-card p {
+            font-size: 1.1rem;
+            color: var(--light-grey);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .follow-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .follow-button:hover {
+            background-color: #fff;
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+
+        /* ------------------------- */
+        /* Section 7: Footer         */
+        /* ------------------------- */
+        footer {
+            padding: 4rem 2rem 2rem;
+            background-color: var(--dark-grey);
+            border-top: 1px solid #333;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .footer-logo span { color: var(--accent-color); }
+        
+        .footer-about p {
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h3::after, .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-grey);
+            text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-copyright p {
+            font-size: 1rem;
+            color: var(--text-grey);
+        }
+
+        /* --- MODIFIED FOOTER LINK STYLING --- */
+        .footer-copyright a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative; 
+        }
+
+        .footer-copyright a .arrow-animation {
+            display: inline-block;
+            color: var(--accent-color);
+            margin-right: 5px;
+            font-weight: bold;
+            /* Added constant animation */
+            animation: pulseArrow 1.5s ease-in-out infinite;
+        }
+
+        .footer-copyright a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* --- ADDED KEYFRAME FOR FOOTER ARROW --- */
+        @keyframes pulseArrow {
+          0% {
+            opacity: 0.3;
+            transform: translateX(-5px);
+          }
+          50% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+          100% {
+            opacity: 0.3;
+            transform: translateX(-5px);
+          }
+        }
+
+
+        /* ------------------------- */
+        /* Scroll Animations (JS)    */
+        /* ------------------------- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ------------------------- */
+        /* Scroll to Top Button      */
+        /* ------------------------- */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            z-index: 998;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        #scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #scroll-to-top:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        /* ------------------------- */
+        /* Media Queries (Responsive)*/
+        /* ------------------------- */
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            /* Responsive Header/Menu */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 100%;
+                height: 100vh;
+                background-color: var(--dark-grey);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+            
+            .mobile-menu-icon.fa-times {
+                transform: rotate(90deg);
+                transition: transform 0.3s ease;
+            }
+
+            /* --- Other Sections --- */
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Features */
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Models */
+            .tab-content {
+                grid-template-columns: 1fr;
+            }
+            .tab-content img {
+                order: -1; /* Move image to top on mobile */
+            }
+
+            /* Reels */
+            .reels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Follow */
+            .follow-card {
+                padding: 2rem;
+            }
+            .follow-username {
+                font-size: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-links h3, .footer-social h3 {
+                margin-top: 2rem;
+            }
+            .footer-links h3::after, .footer-social h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        
+        @media (min-width: 769px) {
+             .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+           }
+             .reels-grid {
+                grid-template-columns: repeat(3, 1fr);
+           }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="preloader">
+        <i class="fas fa-car-side"></i>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo">DREAM<span>2</span>FORTUNER</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#slider-section">Gallery</a></li>
+                <li><a href="#features-section">Features</a></li>
+                <li><a href="#models-section">Models</a></li>
+                <li><a href="#reels-section">Reels</a></li>
+                <li><a href="#follow-section">Follow</a></li>
+            </ul>
+            <div class="mobile-menu-icon" id="mobile-menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-on-load">
+            <h1>Chasing the Legend</h1>
+            <p>Follow the journey. Join the dream.</p>
+            <a href="#features-section" class="cta-button">Explore Features</a>
+        </div>
+        <a href="#slider-section" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section class="slider-section" id="slider-section">
+        <h2 class="section-title animate-on-scroll">Visions of the Legend</h2>
+        <div class="slider-container animate-on-scroll">
+            <div class="slider-wrapper">
+                <div class="slide"><img src="for2.jpg" alt="Fortuner 1"></div>
+                <div class="slide"><img src="for1.jpg" alt="Fortuner 2"></div>
+                <div class="slide"><img src="for4.jpg" alt="Fortuner Legender"></div>
+                <div class="slide"><img src="for17.jpg" alt="Fortuner Off-road"></div>
+                <div class="slide"><img src="for13.jpg" alt="Fortuner Interior"></div>
+                
+                <div class="slide"><img src="for5.jpg" alt="Fortuner 1"></div>
+                <div class="slide"><img src="for8.jpg" alt="Fortuner 2"></div>
+                <div class="slide"><img src="for14.jpg" alt="Fortuner Legender"></div>
+                <div class="slide"><img src="for9.jpg" alt="Fortuner Off-road"></div>
+                <div class="slide"><img src="for14.jpg" alt="Fortuner Interior"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features-section">
+        <h2 class="section-title animate-on-scroll">Why Fortuner?</h2>
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll" data-speed="0.8">
+                <img src="for4.jpg" alt="Power">
+                <h3>Unmatched Performance</h3>
+                <p>The powerhouse 2.8L Turbo-Diesel engine with SIGMA-4 (4x4) drive provides instant torque to conquer any terrain with ease.</p>
+            </div>
+            <div class="feature-card animate-on-scroll" data-speed="1">
+                <img src="for2.jpg" alt="Design">
+                <h3>Commanding Presence</h3>
+                <p>With its new dynamic LED headlamps, aggressive grille, and imposing stance, the Fortuner demands respect on every road.</p>
+            </div>
+            <div class="feature-card animate-on-scroll" data-speed="0.8">
+                <img src="for16.jpg" alt="Comfort">
+                <h3>Luxury & Safety</h3>
+                <p>Experience true comfort with ventilated seats, premium audio, and a fortress of safety with 7 SRS airbags.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="models-section" id="models-section">
+        <h2 class="section-title animate-on-scroll">Choose Your Legend</h2>
+        <div class="tab-buttons animate-on-scroll">
+            <button class="tab-button active" data-tab="legender">Legender</button>
+            <button class="tab-button" data-tab="fortuner">Fortuner</button>
+        </div>
+        
+        <div class="container">
+            <div class="tab-content active animate-on-scroll" id="tab-legender">
+                <div class="tab-text">
+                    <h3>The Legender</h3>
+                    <p>Experience the next level of prestige with the Legender. Its sleek, aerodynamic design, two-tone roof, and exclusive interior trim set it apart. This is not just an SUV; it's a statement of style and sophistication.</p>
+                </div>
+                <div class="tab-image">
+                    <img src="leg.jpeg" alt="Fortuner Legender">
+                </div>
+            </div>
+            
+            <div class="tab-content animate-on-scroll" id="tab-fortuner">
+                <div class="tab-text">
+                    <h3>The Fortuner</h3>
+                    <p>The classic icon. Built for adventure, the standard Fortuner combines rugged durability with premium comfort. Its powerful engine and 4x4 capabilities make it the undisputed king of every terrain, from city streets to mountain peaks.</p>
+                </div>
+                <div class="tab-image">
+                    <img src="forr.webp" alt="Standard Fortuner">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reels-section" id="reels-section">
+        <h2 class="section-title animate-on-scroll">Our Insta Reels</h2>
+        <div class="reels-grid">
+            <div class="reel-placeholder animate-on-scroll">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQjAeEDDUwB/?igsh=MWkzNm12cjEyNGc4dQ== " data-instgrm-version="14"></blockquote>
+            </div>
+            <div class="reel-placeholder animate-on-scroll">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQi1JbSikbW/?igsh=NmY1NWZ0ZDhhMmo%3D" data-instgrm-version="14"></blockquote>
+            </div>
+            <div class="reel-placeholder animate-on-scroll">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQjAeEDDUwB/?igsh=MWkzNm12cjEyNGc4dQ== " data-instgrm-version="14"></blockquote>
+            </div>
+        </div>
+        <script async src="//www.instagram.com/embed.js"></script>
+    </section>
+
+    <section class="follow-section" id="follow-section">
+        <h2 class="section-title animate-on-scroll">Join the Journey</h2>
+        <div class="follow-card animate-on-scroll">
+            <div class="follow-icon">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="follow-username">@dream_to_fortuner</div>
+            <p>Follow my dream journey on Instagram for daily updates, reels, and more!</p>
+            <a href="https://www.instagram.com/dream_to_fortuner" class="follow-button" target="_blank" rel="noopener noreferrer">
+                Follow Now
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="#hero" class="footer-logo">FORTUNER</a>
+                <p>Embrace the journey with the king of SUVs. Power, luxury, and a spirit of adventure combined.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#slider-section">Gallery</a></li>
+                    <li><a href="#features-section">Features</a></li>
+                    <li><a href="#models-section">Models</a></li>
+                    <li><a href="#reels-section">Reels</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dream_to_fortuner" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>
+                &copy; 2025 All rights reserved | Developed by 
+                <a href="https://lokeshloki.site" target="_blank" rel="noopener noreferrer">
+                    <span class="arrow-animation">--&gt;</span> Lokeshloki
+                </a>
+            </p>
+        </div>
+    </footer>
+    
+    <a href="#hero" id="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Part 0: Preloader ---
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                preloader.classList.add('hidden');
+            });
+            
+            // --- Part 1: Responsive Menu ---
+            const menuIcon = document.getElementById('mobile-menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const navLinksItems = navLinks.querySelectorAll('a');
+
+            menuIcon.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                // Toggle icon (bars to 'x')
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+
+            // Close menu when a link is clicked
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            // --- Part 2: Intersection Observer (For fade-in animations) ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+
+            // --- Part 3: Scroll-to-Top Button ---
+            const scrollToTopButton = document.getElementById('scroll-to-top');
+            
+            // --- Part 4: Main Scroll Animations ---
+            const heroSection = document.getElementById('hero');
+            const featureCards = document.querySelectorAll('.feature-card[data-speed]');
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+
+                // --- Parallax Hero Background ---
+                heroSection.style.backgroundPositionY = `${scrollY * 0.5}px`;
+
+                // --- Parallax Feature Cards ---
+                featureCards.forEach(card => {
+                    const speed = card.getAttribute('data-speed');
+                    const rect = card.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (rect.top < windowHeight && rect.bottom > 0) {
+                        const yPos = -((windowHeight / 2) - rect.top) / 10 * speed; 
+                        card.style.transform = `translateY(${yPos}px)`;
+                    }
+                });
+                
+                // --- Scroll-to-Top Button Visibility ---
+                if (scrollY > 400) {
+                    scrollToTopButton.classList.add('visible');
+                } else {
+                    scrollToTopButton.classList.remove('visible');
+                }
+            });
+
+            // --- Part 5: Models Section (Tabs) ---
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+
+                    // Remove active from all
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active to clicked
+                    button.classList.add('active');
+                    document.getElementById(`tab-${tabId}`).classList.add('active');
+                });
+            });
+
+            // --- Part 6 (Removed) ---
+            // Hotspot JS is no longer needed as the section was replaced.
+
+        });
+    </script>
+</body>
+</html>
